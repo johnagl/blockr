@@ -14,6 +14,7 @@
     "48": "logo192.png",
     "128": "logo192.png"
   },
+  "options_page": "index.html",
   "content_security_policy": "script-src 'self' 'sha256-wuZ36RTz3eIAef210FpU+6IC8p5XlNe21ma4wd+RwsM='; object-src 'self'",
   "permissions": [
   ]
