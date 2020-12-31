@@ -23,10 +23,11 @@ function InputBox() {
         console.log(`adding ${url} to blocked`);
         const websiteToBlock = {[url]: true};
         console.log(`websiteToBlock ${JSON.stringify(websiteToBlock)}`);
-        const newBlockedObj = Object.assign({}, blockedObj, websiteToBlock);
+        const newBlockedObj = Object.assign({}, blockedObj.blocked, websiteToBlock);
         console.log(`newBlockedObj ${newBlockedObj}`);
         chrome.storage.sync.set({'blocked': newBlockedObj}, () => {
             console.log(`result after adding ${newBlockedObj}`);
+            chrome.runtime.sendMessage({type: "added website"});
         });
     }
 
@@ -54,6 +55,7 @@ function InputBox() {
                 id="deleteAll"
                 onClick={handleDeleteAll}
             >
+                Remove All
             </button>
         </>
     )
