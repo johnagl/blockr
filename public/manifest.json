@@ -4,7 +4,9 @@
   "name": "My Extension",
   "description": "This extension is a starting point to create a real Chrome extension",
   "version": "0.0.1",
-
+  "background": {
+    "scripts": ["app/background.js"]
+  },
   "browser_action": {
     "default_popup": "index.html",
     "default_title": "Open the popup"
@@ -17,5 +19,12 @@
   "options_page": "index.html",
   "content_security_policy": "script-src 'self' 'sha256-wuZ36RTz3eIAef210FpU+6IC8p5XlNe21ma4wd+RwsM='; object-src 'self'",
   "permissions": [
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+		"idle",
+    "<all_urls>",
+    "tabs"
   ]
 }
