@@ -1,6 +1,6 @@
 /*global chrome*/
 
-// TODO: Refactor this!
+// TODO: Refactor/Modularize code, use classes?
 
 // var url;
 var blocked = {};
