@@ -76,8 +76,20 @@ function InputBox() {
         const newBlockedObj = Object.assign({}, blockedObj, websiteToBlock);
         console.log(`newBlockedObj ${newBlockedObj}`);
         chrome.storage.sync.set({'blocked': newBlockedObj}, () => {
-            console.log(`result after adding ${newBlockedObj}`);
+            console.log(`result after adding ${JSON.stringify(newBlockedObj)}`);
             chrome.runtime.sendMessage({type: "added website"});
+            setBlockedObj(newBlockedObj);
+        });
+    }
+
+    const handleRemoveWebsite = (id) => {
+        console.log(`remove ${id}`);
+        const newBlockedObj = Object.assign({}, blockedObj);
+        delete newBlockedObj[id];
+        console.log(JSON.stringify(newBlockedObj));
+        chrome.storage.sync.set({'blocked': newBlockedObj}, () => {
+            console.log(`result after removing ${JSON.stringify(newBlockedObj)}`);
+            chrome.runtime.sendMessage({type: "remove website", payload: id});
             setBlockedObj(newBlockedObj);
         });
     }
@@ -123,13 +135,15 @@ function InputBox() {
                 </IconButton>
             </Paper>
             <List className={classes.listRoot}>
-                {Object.keys(blockedObj).map((value) => {
+                {blockedObj && Object.keys(blockedObj).map((value) => {
                     const labelId = `checkbox-list-label-${value}`;
+                    console.log(`labelId : ${labelId}`);
+                    console.log(`value ${value}`);
                     return (
                     <ListItem fullWidth key={value} role={undefined} button onClick={() => console.log("test")}>
                         <ListItemText id={labelId} primary={value} />
                         <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="remove">
+                            <IconButton edge="end" aria-label="remove" onClick={() => handleRemoveWebsite(value)}>
                                 <DeleteIcon />
                             </IconButton>
                         </ListItemSecondaryAction>

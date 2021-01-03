@@ -8,8 +8,14 @@ var blocked = {};
 function initBlockList(){
   console.log("initBlockList called");
   chrome.storage.sync.get('blocked', (result) => {
-      blocked = Object.assign(blocked, result.blocked);
+      blocked = Object.assign({}, result.blocked);
+      console.log(`result.blocked: ${result.blocked}`);
       console.log(`blocked ${JSON.stringify(blocked)}`);
+      chrome.webRequest.onBeforeRequest.addListener(
+        function(details) { return choserino(details); },
+        {urls: ["<all_urls>"]},
+        ["blocking"]
+      );
   });
 }
 
@@ -25,11 +31,6 @@ initBlockList();
 
 function reinit() {
     initBlockList();
-    chrome.webRequest.onBeforeRequest.addListener(
-      function(details) { return choserino(details); },
-      {urls: ["<all_urls>"]},
-      ["blocking"]
-    );
 }
 
 function choserino(details){
@@ -50,6 +51,7 @@ chrome.runtime.onMessage.addListener(
     function(request,sender,sendResponse) {
         console.log("request " + request.type)
         if(request.type === "added website") {
+          console.log("added website");
           reinit();
         }
 });
@@ -58,6 +60,7 @@ chrome.runtime.onMessage.addListener(
     function(request,sender,sendResponse) {
 
         if(request.type === "remove website") {
+          console.log("remove website")
           reinit();
         }
 });
