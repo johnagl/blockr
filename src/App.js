@@ -1,5 +1,5 @@
 import './App.css';
-import BlockedList from "./containers/BlockedList.js";
+import BlockedList from "./containers/BlockedList";
 
 function App() {
   return (
