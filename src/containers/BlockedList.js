@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import Container from '@material-ui/core/Container';
 import BlockedWebsite from '../components/BlockedWebsite';
 import InputBox from '../components/InputBox';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     listRoot: {
@@ -52,6 +53,8 @@ function BlockedList() {
 
     const handleDeleteAll = () => {
         chrome.storage.sync.remove("blocked", () => {
+            chrome.runtime.sendMessage({type: "remove website"});
+            setBlockedObj({});
             console.log("Removed all from blocked");
         })
     }
@@ -70,12 +73,9 @@ function BlockedList() {
                     );
                 })}
             </List>
-            <button
-                id="deleteAll"
-                onClick={handleDeleteAll}
-            >
+            <Button id="deleteAll" variant="contained" color="secondary" disableElevation onClick={handleDeleteAll}>
                 Remove All
-            </button>
+            </Button>
         </Container>
         </>
     )
