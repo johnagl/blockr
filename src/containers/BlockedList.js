@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 // TODO: Display added websites as a list 
-function InputBox() {
+function BlockedList() {
     const [url, setUrl] = useState('');
     const [blockedObj, setBlockedObj] = useState({});
 
@@ -162,4 +162,4 @@ function InputBox() {
     )
 }
 
-export default InputBox;
+export default BlockedList;

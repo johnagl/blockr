@@ -1,10 +1,10 @@
 import './App.css';
-import InputBox from "./components/InputBox.js";
+import BlockedList from "./containers/BlockedList.js";
 
 function App() {
   return (
     <div>
-      <InputBox></InputBox>
+      <BlockedList></BlockedList>
     </div>
   );
 }
