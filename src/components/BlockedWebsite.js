@@ -9,7 +9,7 @@ const BlockedWebsite = ( {labelId, value, handleRemoveWebsite } ) => {
         <ListItem fullWidth key={value} role={undefined} button>
             <ListItemText id={labelId} primary={value} />
                 <ListItemSecondaryAction>
-                    <IconButton edge="end" aria-label="remove" onClick={() => handleRemoveWebsite(value)}>
+                    <IconButton edge="end" onClick={() => handleRemoveWebsite(value)}>
                         <DeleteIcon />
                             </IconButton>
                 </ListItemSecondaryAction>

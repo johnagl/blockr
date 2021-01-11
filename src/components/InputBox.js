@@ -28,10 +28,9 @@ const InputBox = ({handleAddWebsite, onSetUrlChange}) => {
             <InputBase
                 className={classes.input}
                 placeholder="Website URL"
-                inputProps={{ 'aria-label': 'Input website url' }}
                 onChange={onSetUrlChange}
             />
-            <IconButton onClick={handleAddWebsite} className={classes.iconButton} aria-label="search">
+            <IconButton onClick={handleAddWebsite} className={classes.iconButton}>
                 <AddIcon />
             </IconButton>
         </Paper>

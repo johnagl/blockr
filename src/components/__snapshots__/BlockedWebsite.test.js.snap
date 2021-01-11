@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render blocked website list 1`] = `
+<WithStyles(ForwardRef(ListItem))
+  button={true}
+  fullWidth={true}
+>
+  <WithStyles(ForwardRef(ListItemText)) />
+  <WithStyles(ForwardRef(ListItemSecondaryAction))>
+    <WithStyles(ForwardRef(IconButton))
+      edge="end"
+      onClick={[Function]}
+    >
+      <Memo([object Object]) />
+    </WithStyles(ForwardRef(IconButton))>
+  </WithStyles(ForwardRef(ListItemSecondaryAction))>
+</WithStyles(ForwardRef(ListItem))>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render input box component 1`] = `
+<WithStyles(ForwardRef(Paper))
+  className="makeStyles-root-1"
+  component="form"
+>
+  <WithStyles(ForwardRef(InputBase))
+    className="makeStyles-input-2"
+    placeholder="Website URL"
+  />
+  <WithStyles(ForwardRef(IconButton))
+    className="makeStyles-iconButton-3"
+  >
+    <Memo([object Object]) />
+  </WithStyles(ForwardRef(IconButton))>
+</WithStyles(ForwardRef(Paper))>
+`;
