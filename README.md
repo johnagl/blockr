@@ -10,4 +10,5 @@
 - `load unpacked` and select `build` folder to add the extension
 - Open `options` and add/remove website urls
 
-
+![alt text](https://github.com/johnagl/blockr/blob/master/src/images/blockr.png?raw=true)
+![alt text](https://github.com/johnagl/blockr/blob/master/src/images/blocked.png?raw=true)
