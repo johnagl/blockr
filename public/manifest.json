@@ -5,7 +5,7 @@
   "description": "Block distracting websites",
   "version": "0.0.1",
   "background": {
-    "scripts": ["app/background.js"]
+    "page": "app/background.html"
   },
   "icons": {
     "16": "logo192.png",
