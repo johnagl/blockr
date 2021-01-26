@@ -32,14 +32,28 @@ function BlockedList() {
         setUrl(event.target.value);
     }
 
+    const sanitizeUrl = (url) => {
+    }
+
     const handleAddWebsite = () => {
-        const websiteToBlock = {[url]: true};
-        // TODO: Sanitize url, so that we do not add duplicates
-        const newBlockedObj = Object.assign({}, blockedObj, websiteToBlock);
-        chrome.storage.sync.set({'blocked': newBlockedObj}, () => {
-            chrome.runtime.sendMessage({type: "added website"});
-            setBlockedObj(newBlockedObj);
-        });
+        let validUrl = isValidUrl(url);
+        if (validUrl) {
+            const websiteToBlock = {[url.slice(4)]: true};
+            // TODO: Sanitize url, so that we do not add duplicates
+            const newBlockedObj = Object.assign({}, blockedObj, websiteToBlock);
+            chrome.storage.sync.set({'blocked': newBlockedObj}, () => {
+                chrome.runtime.sendMessage({type: "added website"});
+                setBlockedObj(newBlockedObj);
+            });
+        } else {
+            alert("Invalid url, please use the following format: www.twitter.com");
+        }
+    }
+
+    const isValidUrl = (url) => {
+        // TODO: Make this less restrictive
+        let validUrl = new RegExp('^w{3}\.{1}.+\.{1}[a-z]+$');
+        return validUrl.test(url);
     }
 
     const handleRemoveWebsite = (id) => {

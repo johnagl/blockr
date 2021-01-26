@@ -11,7 +11,7 @@ const BlockedWebsite = ( {labelId, value, handleRemoveWebsite } ) => {
                 <ListItemSecondaryAction>
                     <IconButton edge="end" onClick={() => handleRemoveWebsite(value)}>
                         <DeleteIcon />
-                            </IconButton>
+                    </IconButton>
                 </ListItemSecondaryAction>
         </ListItem>
     )

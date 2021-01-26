@@ -21,6 +21,8 @@
     "storage",
 		"idle",
     "<all_urls>",
-    "tabs"
+    "tabs",
+    "http://*/*",
+    "https://*/*"
   ]
 }

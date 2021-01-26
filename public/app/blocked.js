@@ -28,7 +28,8 @@ class BlockedUrlService {
               (details) => {
                 return this.setBlocked(details);
               },  
-              {urls: ["<all_urls>"]},
+              {urls: ["<all_urls>", "http://*/*",
+              "https://*/*"]},
               ["blocking"]
             );
         });
@@ -36,8 +37,9 @@ class BlockedUrlService {
 
     setBlocked = (details) => {
         let url = details.url;
+        console.log(`URL ${url}`);
         for (const [blockedSite, isTrue] of Object.entries(this.blocked)) {
-          let regex = new RegExp(blockedSite);
+          let regex = new RegExp(`${blockedSite}`);
           if (isTrue && regex.test(url)) {
             return {cancel: true};
           }
